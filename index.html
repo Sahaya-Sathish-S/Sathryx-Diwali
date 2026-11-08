@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090612">
+  <meta name="description" content="SATHRYX — an interactive Festival of Lights experience. Light a diya, create rangoli, design greetings and celebrate together.">
+  <title>SATHRYX — The Festival of Lights</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="ambientCanvas" aria-hidden="true"></canvas>
+  <div class="noise" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="SATHRYX home">
+      <img src="assets/sathryx-logo.png" alt="SATHRYX logo">
+      <span>SATHRYX<small>FESTIVAL OF LIGHTS</small></span>
+    </a>
+    <nav id="mainNav">
+      <a href="#celebrate">Celebrate</a><a href="#studio">Greeting studio</a><a href="#rangoli">Rangoli</a><a href="#wishes">Send a wish</a>
+    </nav>
+    <div class="top-actions">
+      <button class="icon-btn" id="soundToggle" title="Toggle ambient sound" aria-label="Toggle sound">♫</button>
+      <a class="nav-cta" href="#celebrate">Enter the celebration <span>↗</span></a>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero cinematic-hero" id="home">
+      <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="assets/diwali-mobile.png" aria-hidden="true">
+        <source src="assets/diwali-hero.mp4" type="video/mp4">
+      </video>
+      <div class="hero-shade"></div>
+      <div class="hero-copy section-wrap">
+        <div class="eyebrow"><span class="live-dot"></span> SATHRYX PRESENTS · THE FESTIVAL OF LIGHTS</div>
+        <h1>A night of light.<br><span class="gradient-text">A world of wonder.</span></h1>
+        <p class="hero-lead">Celebrate the spirit of Diwali through light, creativity and meaningful moments. Discover an immersive festive experience, crafted by SATHRYX.</p>
+        <div class="hero-actions">
+          <a class="primary-btn" href="#celebrate">Enter the celebration <span>✦</span></a>
+          <button class="text-btn" id="heroCelebrate">✧ Illuminate the sky</button>
+        </div>
+        <div class="hero-proof"><span class="hero-proof-line"></span><span>LIGHT · JOY · TOGETHERNESS</span></div>
+      </div>
+      <div class="hero-bottom"><span>SCROLL TO EXPLORE</span><span class="hero-scroll-mark">↓</span><span>AN INTERACTIVE DIWALI EXPERIENCE</span></div>
+      <div class="hero-corner-symbol" aria-hidden="true">✧</div>
+    </section>
+
+    <section class="ticker" aria-label="Festival message"><div>LIGHT UP THE NIGHT <b>✦</b> SHARE THE JOY <b>✦</b> CELEBRATE TOGETHER <b>✦</b> SPREAD GOOD ENERGY <b>✦</b> LIGHT UP THE NIGHT <b>✦</b> SHARE THE JOY <b>✦</b></div></section>
+
+    <section class="intro section-wrap" id="celebrate">
+      <div class="section-heading">
+        <div><div class="eyebrow">01 — THE CELEBRATION</div><h2>One festival.<br><span class="gradient-text">Endless ways to glow.</span></h2></div>
+        <p>Every interaction adds a little more light. Explore the experiences below and make this celebration yours.</p>
+      </div>
+      <div class="feature-grid">
+        <article class="feature-card feature-large diya-card">
+          <div class="card-orb"></div><div class="card-top"><span class="mini-icon">🪔</span><span class="card-index">01 / LIGHT</span></div>
+          <h3>Light a little<br>happiness.</h3><p>Tap the button and add your diya to the celebration. Every light counts.</p>
+          <div class="diya-row" id="diyaRow"><div class="mini-diya"><i></i></div><div class="mini-diya"><i></i></div><div class="mini-diya"><i></i></div></div>
+          <button class="outline-btn" id="lightDiya">＋ Light a diya <span>→</span></button>
+          <div class="card-count"><strong id="diyaCount">0</strong><span>lights kindled in this visit</span></div>
+        </article>
+        <article class="feature-card fireworks-card">
+          <div class="card-top"><span class="mini-icon">🎆</span><span class="card-index">02 / CELEBRATE</span></div>
+          <div class="firework-art"><span>✦</span><i>✧</i><b>✺</b></div>
+          <h3>Make the sky<br>come alive.</h3><p>Trigger a burst of colour and celebrate the moment.</p>
+          <button class="outline-btn" id="fireworksBtn">Launch fireworks <span>↗</span></button>
+        </article>
+        <article class="feature-card lantern-card">
+          <div class="card-top"><span class="mini-icon">🏮</span><span class="card-index">03 / DREAM</span></div>
+          <div class="lantern-art">🏮 <span>🏮</span></div>
+          <h3>Send a wish<br>into the night.</h3><p>Release a glowing lantern with a thought worth sharing.</p>
+          <button class="outline-btn" id="lanternBtn">Release a lantern <span>↑</span></button>
+        </article>
+      </div>
+    </section>
+
+    <section class="studio-section section-wrap" id="studio">
+      <div class="section-heading">
+        <div><div class="eyebrow">02 — YOUR CREATIVE SPACE</div><h2>Make a moment.<br><span class="gradient-text">Make it yours.</span></h2></div>
+        <p>Design a personalised Diwali greeting in seconds. Choose a mood, add your message and download your own card.</p>
+      </div>
+      <div class="studio-layout">
+        <div class="studio-controls panel">
+          <div class="panel-label">GREETING STUDIO <span>✦</span></div>
+          <label for="fromName">Your name</label><input id="fromName" maxlength="28" placeholder="e.g. Sahaya Sathish" value="SATHRYX">
+          <label for="toName">Send this greeting to</label><input id="toName" maxlength="28" placeholder="Someone special">
+          <label for="wishMessage">Your message</label><textarea id="wishMessage" rows="3" maxlength="130">May your days sparkle with joy, your home glow with peace, and your dreams shine brighter than ever.</textarea>
+          <label>Choose your colour story</label>
+          <div class="swatches"><button class="swatch active" data-theme="violet" aria-label="Violet theme"></button><button class="swatch" data-theme="sunset" aria-label="Sunset theme"></button><button class="swatch" data-theme="emerald" aria-label="Emerald theme"></button><button class="swatch" data-theme="midnight" aria-label="Midnight theme"></button></div>
+          <button class="primary-btn full-btn" id="downloadCard">Download greeting card <span>↓</span></button>
+          <button class="subtle-btn" id="shareCard">Share greeting ↗</button>
+          <p class="micro-note">Your card is created in your browser — no account or paid API needed.</p>
+        </div>
+        <div class="card-preview-wrap">
+          <div class="preview-label"><span>LIVE PREVIEW</span><span class="preview-live"><i></i> INSTANT UPDATE</span></div>
+          <div class="greeting-card theme-violet" id="greetingCard">
+            <div class="card-corner corner-tl">✧</div><div class="card-corner corner-br">✧</div>
+            <div class="card-mandala">✺</div><div class="preview-diya">🪔</div>
+            <div class="preview-kicker">A FESTIVAL OF LIGHT</div><div class="preview-title">Happy<br><em>Diwali</em></div>
+            <div class="preview-divider">✦ ━━━━━ ✦</div>
+            <p id="previewMessage">May your days sparkle with joy, your home glow with peace, and your dreams shine brighter than ever.</p>
+            <div class="preview-to" id="previewTo">WITH LOVE</div><div class="preview-from" id="previewFrom">SATHRYX</div>
+            <div class="preview-stars">✦　·　✧　·　✦</div>
+          </div>
+          <div class="preview-foot"><span>MADE WITH LIGHT & LOVE</span><span>SATHRYX · FESTIVAL OF LIGHTS</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="rangoli-section section-wrap" id="rangoli">
+      <div class="section-heading">
+        <div><div class="eyebrow">03 — THE RANGOLI LAB</div><h2>Draw in colour.<br><span class="gradient-text">Create your pattern.</span></h2></div>
+        <p>Create a personal rangoli using a luminous brush, mirrored strokes and a curated festive palette.</p>
+      </div>
+      <div class="rangoli-layout panel">
+        <div class="rangoli-toolbar">
+          <div class="tool-group"><span class="tool-label">COLOUR</span><div class="brush-colors"><button class="brush-color selected" data-color="#ff4fc8" style="--swatch:#ff4fc8"></button><button class="brush-color" data-color="#ffd166" style="--swatch:#ffd166"></button><button class="brush-color" data-color="#28d9ff" style="--swatch:#28d9ff"></button><button class="brush-color" data-color="#9b72ff" style="--swatch:#9b72ff"></button><button class="brush-color" data-color="#70f0b0" style="--swatch:#70f0b0"></button><button class="brush-color" data-color="#ffffff" style="--swatch:#ffffff"></button></div></div>
+          <div class="tool-group"><span class="tool-label">BRUSH SIZE</span><input type="range" id="brushSize" min="2" max="22" value="7"></div>
+          <label class="symmetry-toggle"><input type="checkbox" id="symmetry" checked><span class="toggle-ui"></span> Mirror symmetry</label>
+          <div class="rangoli-actions"><button class="small-btn" id="undoDraw">↶ Undo</button><button class="small-btn" id="clearDraw">Clear</button><button class="small-btn accent-small" id="saveRangoli">↓ Save art</button></div>
+        </div>
+        <div class="canvas-wrap"><canvas id="rangoliCanvas" width="900" height="560"></canvas><div class="canvas-hint" id="canvasHint">✧ Start drawing your rangoli here ✧</div></div>
+        <div class="canvas-footer"><span>✦ TOUCH OR CLICK TO DRAW</span><span>YOUR ART STAYS ON THIS DEVICE UNTIL YOU CLEAR IT</span></div>
+      </div>
+    </section>
+
+    <section class="wishes-section section-wrap" id="wishes">
+      <div class="section-heading">
+        <div><div class="eyebrow">05 — THE WISH WALL</div><h2>Good wishes.<br><span class="gradient-text">Shared light.</span></h2></div>
+        <p>Create a personal Diwali wish and keep it in your own celebration space. Your entries stay in this browser.</p>
+      </div>
+      <div class="wish-layout">
+        <form class="wish-form panel" id="wishForm"><div class="panel-label">ADD YOUR LIGHT <span>✦</span></div><label for="wishAuthor">Your name</label><input id="wishAuthor" maxlength="24" placeholder="Your name" required><label for="wishText">Your Diwali wish</label><textarea id="wishText" rows="4" maxlength="150" placeholder="May everyone find a reason to smile..." required></textarea><button class="primary-btn full-btn" type="submit">Add my wish <span>✦</span></button><p class="micro-note">Please keep it kind, positive and respectful.</p></form>
+        <div class="wish-wall"><div class="wall-top"><div><span class="wall-dot"></span> YOUR SAVED WISHES</div><span id="wishCount">0 WISHES</span></div><div id="wishList" class="wish-list"><div class="empty-wishes">✧ Your wish could be the first light here. ✧</div></div></div>
+      </div>
+    </section>
+
+    <section class="finale section-wrap">
+      <div class="finale-glow"></div><div class="finale-content"><div class="eyebrow">UNTIL THE NEXT BRIGHT MOMENT</div><div class="finale-symbol">✺</div><h2>Keep shining.<br><span class="gradient-text">Keep spreading joy.</span></h2><p>May every light remind us that even the smallest spark can brighten someone's world.</p><button class="primary-btn" id="finaleFireworks">Celebrate the light <span>✦</span></button></div>
+      <div class="finale-bottom"><span>HAPPY DIWALI FROM</span><strong>SATHRYX</strong><span>DESIGNED TO SPREAD LIGHT</span></div>
+    </section>
+  </main>
+
+  <footer><a class="footer-brand" href="#home">SATHRYX <span>✦</span></a><span>Celebrating creativity, connection & the Festival of Lights.</span><a href="#home">BACK TO TOP ↑</a></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
